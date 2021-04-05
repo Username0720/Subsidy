@@ -25,20 +25,18 @@ namespace SubsidyCalc
             SubsidyCalculation subsidyCalculation = new SubsidyCalculation();
             try
             {
-                subsidyCalculation.OnNotify += new EventHandler<string>(NewNotify);
+                subsidyCalculation.OnNotify += NewNotify;
                 charge = subsidyCalculation.CalculateSubsidy(volume, tariff);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            Console.WriteLine(charge.HouseId);
             Console.WriteLine(charge.Value);
-            subsidyCalculation.OnNotify += new EventHandler<string>(NewNotify);
         }
         static void NewNotify(object sender, string message)
         {
-            Console.WriteLine(message);
+            Console.WriteLine(sender.ToString());
         }
     }
 }
